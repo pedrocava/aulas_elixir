@@ -1,0 +1,21 @@
+1) criar migration para a tabela to_do_itens
+
+campos: id (binary, autogenerate), user_id (foreign key), content (string), checked? (boolean), timestamps
+
+pesquisar: references()
+
+2) Criar schema e changeset ToDoItem
+
+3) Criar o contexto ToDoItem
+
+4) Funções para o contexto User:
+  * User.add(params) (já feito)
+  * User.list()
+  * User.search(username)
+  * User.delete(username)
+  
+5) Funções para o contexto ToDoItem
+  * ToDoItem.create(username, params)
+  * ToDoItem.list(username)
+  * ToDoItem.update(id, params) (params: mapa com content e/ou checked?)
+  * ToDoItem.delete(id)
