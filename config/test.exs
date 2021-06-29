@@ -7,9 +7,10 @@ use Mix.Config
 # Run `mix help test` for more information.
 config :to_do, ToDo.Repo,
   username: "postgres",
-  password: "postgres",
-  database: "to_do_test#{System.get_env("MIX_TEST_PARTITION")}",
+  password: "12345678",
+  database: "postgres_test",
   hostname: "localhost",
+  port: 15432,
   pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,

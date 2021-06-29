@@ -20,7 +20,8 @@ defmodule ToDo.Schemas.User do
     |> unique_constraint(:email)
     |> update_change(:email, &String.downcase/1)
     |> validate_change(:birthdate, fn field, birthdate ->
-      age = Timex.Interval.new(from: birthdate, until: Date.utc_today())
+      age =
+        Timex.Interval.new(from: birthdate, until: Date.utc_today())
         |> Timex.Interval.duration(:years)
 
       if age >= 18 do
@@ -32,11 +33,8 @@ defmodule ToDo.Schemas.User do
   end
 
   def add(attrs) do
-
     %__MODULE__{}
     |> changeset(attrs)
     |> Repo.insert()
-
   end
-
 end
