@@ -41,7 +41,8 @@ defmodule ToDo.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:timex, "~> 3.7.0"}
+      {:timex, "~> 3.7.0"},
+      {:mox, "~> 1.0", only: :test}
     ]
   end
 

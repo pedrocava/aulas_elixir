@@ -4,6 +4,8 @@ campos: id (binary, autogenerate), user_id (foreign key), content (string), chec
 
 pesquisar: references()
 
+DONE
+
 2) Criar schema e changeset ToDoItem
 
 3) Criar o contexto ToDoItem
@@ -11,11 +13,11 @@ pesquisar: references()
 4) Funções para o contexto User:
   * User.add(params) (já feito)
   * User.list()
-  * User.search(username)
-  * User.delete(username)
+  * User.search(email)
+  * User.delete(email)
   
 5) Funções para o contexto ToDoItem
-  * ToDoItem.create(username, params)
-  * ToDoItem.list(username)
-  * ToDoItem.update(id, params) (params: mapa com content e/ou checked?)
-  * ToDoItem.delete(id)
+  * ToDoItem.create(email, params)
+  * ToDoItem.list(email)
+  * ToDoItem.update(email, params) (params: mapa com content e/ou checked?)
+  * ToDoItem.delete(email)

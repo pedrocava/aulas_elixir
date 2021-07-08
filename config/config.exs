@@ -8,6 +8,7 @@
 use Mix.Config
 
 config :to_do,
+  date_module: ToDo.MyDateImpl,
   ecto_repos: [ToDo.Repo],
   generators: [binary_id: true]
 

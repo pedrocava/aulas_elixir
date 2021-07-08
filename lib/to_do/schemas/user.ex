@@ -1,7 +1,9 @@
 defmodule ToDo.Schemas.User do
   use Ecto.Schema
   import Ecto.Changeset
+  import Ecto.Query
   alias ToDo.Repo
+  alias __MODULE__
 
   @primary_key {:id, :binary_id, autogenerate: true}
   schema "users" do
@@ -21,7 +23,7 @@ defmodule ToDo.Schemas.User do
     |> update_change(:email, &String.downcase/1)
     |> validate_change(:birthdate, fn field, birthdate ->
       age =
-        Timex.Interval.new(from: birthdate, until: Date.utc_today())
+        Timex.Interval.new(from: birthdate, until: date_module().today())
         |> Timex.Interval.duration(:years)
 
       if age >= 18 do
@@ -33,8 +35,30 @@ defmodule ToDo.Schemas.User do
   end
 
   def add(attrs) do
-    %__MODULE__{}
+    %User{}
     |> changeset(attrs)
     |> Repo.insert()
+  end
+
+  def list do
+    Repo.all(User)
+  end
+
+  def search(email) do
+    from(User,
+      where: [email: ^email]
+    )
+    |> Repo.one()
+  end
+
+  def delete(email) do
+    from(User,
+      where: [email: ^email]
+    )
+    |> Repo.delete_all()
+  end
+
+  defp date_module() do
+    Application.get_env(:to_do, :date_module)
   end
 end
